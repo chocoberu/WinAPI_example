@@ -5,21 +5,42 @@
 #include "framework.h"
 #include "deltaTime.h"
 #include <list>
+#include <math.h>
 
 using namespace std;
 #define MAX_LOADSTRING 100
 
+enum MOVE_DIR
+{
+    MD_BACK = -1,
+    MD_NONE,
+    MD_FRONT
+};
 typedef struct _tagRectangle
 {
     float left, top, right, bottom;
 } RECTANGLE, *PRECTANGLE;
+typedef struct _tagSphere
+{
+    float x, y;
+    float radius;
+} SPHERE, *PSPHRER;
 
 typedef struct _tagBullet
 {
-    RECTANGLE rc;
+    SPHERE tSphere;
     float fDist;
     float fLimitDist;
 } BULLET, *PBULLET;
+typedef struct _tagMonster
+{
+    SPHERE tSphere;
+    float fSpeed;
+    float fTime;
+    float fLimitTime;
+    int iDir;
+}MONSTER, * PMONSTER;
+
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -27,9 +48,10 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름�
 HWND g_hWnd; // 윈도우 핸들
 HDC g_hDC; // dc 핸들
 bool g_bLoop = true;
-RECTANGLE g_tPlayerRC = { 100,100, 200,200 }; // 플레이어 박스
-// 플레이어 총알
-list<BULLET> g_PlayerBulletList;
+RECTANGLE g_tPlayerRC = { 100,100, 200,200 }; // 플레이어
+list<BULLET> g_PlayerBulletList; // 플레이어 총알
+MONSTER g_tMonster;  // 몬스터
+list<BULLET> g_MonsterBulletList; // 몬스터 총알
 
 // 시간을 구하기 위한 변수들
 LARGE_INTEGER g_tSecond;
@@ -64,7 +86,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    g_hDC = GetDC(g_hWnd);
+    g_hDC = GetDC(g_hWnd); // 화면용 DC 생성
+
+    g_tMonster.tSphere.x = 700.f;
+    g_tMonster.tSphere.y = 50.0f;
+    g_tMonster.tSphere.radius = 50.0f;
+    g_tMonster.fSpeed = 300.0f;
+    g_tMonster.fTime = 0.0f;
+    g_tMonster.fLimitTime = 1.3f;
+    g_tMonster.iDir = MD_FRONT;
+
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DELTATIME));
 
     MSG msg;
@@ -300,48 +331,157 @@ void Run()
     {
         BULLET tBullet;
 
-        tBullet.rc.left = g_tPlayerRC.right;
-        tBullet.rc.right = g_tPlayerRC.right + 50.0f;
-        tBullet.rc.top = (g_tPlayerRC.top + g_tPlayerRC.bottom) / 2 - 25.0f;
-        tBullet.rc.bottom = tBullet.rc.top + 50.0f;
-
+        tBullet.tSphere.x = g_tPlayerRC.right + 50;
+        tBullet.tSphere.y = g_tPlayerRC.top + 50.0f;
+        tBullet.tSphere.radius = 25.0f;
+        
         tBullet.fDist = 0.0f;
-        tBullet.fLimitDist = 500.0f;
+        tBullet.fLimitDist = 600.0f;
 
         g_PlayerBulletList.push_back(tBullet);
     }
 
-    // 총알의 이동 처리
+    if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
+    {
+        POINT ptMouse;
+        GetCursorPos(&ptMouse); // 마우스 커서 위치를 스크린 좌표로 얻어온다
+        ScreenToClient(g_hWnd, &ptMouse); // 스크린 좌표를 클라이언트 좌표로 변환
+
+        if (g_tPlayerRC.left <= ptMouse.x && ptMouse.x <= g_tPlayerRC.right &&
+            g_tPlayerRC.top <= ptMouse.y && ptMouse.y <= g_tPlayerRC.bottom)
+        {
+            MessageBox(NULL, L"플레이어 클릭", L"마우스 클릭", MB_OK);
+        }
+        float fMX = g_tMonster.tSphere.x - ptMouse.x;
+        float fMY = g_tMonster.tSphere.y - ptMouse.y;
+        float fMDist = sqrtf(fMX * fMX + fMY * fMY);
+        if (g_tMonster.tSphere.radius > fMDist)
+        {
+            MessageBox(NULL, L"몬스터 클릭", L"마우스 클릭", MB_OK);
+        }
+    }
+    // 몬스터 이동
+    g_tMonster.tSphere.y += g_tMonster.fSpeed * g_fDeltaTime * fTimeScale * g_tMonster.iDir;
+    
+    if (g_tMonster.tSphere.y + g_tMonster.tSphere.radius >= 600.0f)
+    {
+        g_tMonster.iDir = MD_BACK;
+        g_tMonster.tSphere.y = 550.0f;
+        
+    }
+    else if (g_tMonster.tSphere.y - g_tMonster.tSphere.radius <= 0.0f)
+    {
+        g_tMonster.iDir = MD_FRONT;
+        g_tMonster.tSphere.y = 50.0f;
+    }
+
+    // 몬스터 총알 발사 로직
+    g_tMonster.fTime += g_fDeltaTime * fTimeScale;
+    
+    if (g_tMonster.fTime >= g_tMonster.fLimitTime)
+    {
+        g_tMonster.fTime -= g_tMonster.fLimitTime;
+
+        BULLET tBullet = {};
+
+        tBullet.tSphere.x = g_tMonster.tSphere.x - g_tMonster.tSphere.radius - 25.0f;
+        tBullet.tSphere.y = g_tMonster.tSphere.y;
+        tBullet.tSphere.radius = 25.0f;
+
+        tBullet.fDist = 0.0f;
+        tBullet.fLimitDist = 600.0f;
+
+        g_MonsterBulletList.push_back(tBullet);
+    }
+
+    // 플레이어 총알의 이동 처리
     float fBulletSpeed = 600.0f * g_fDeltaTime * fTimeScale;
     auto iterEnd = g_PlayerBulletList.end();
     for (auto iter = g_PlayerBulletList.begin(); iter != iterEnd;)
     {
-        (*iter).rc.left += fBulletSpeed;
-        (*iter).rc.right += fBulletSpeed;
+        (*iter).tSphere.x += fBulletSpeed;
         (*iter).fDist += fBulletSpeed;
+        
+        // 플레이어 총알 대 몬스터 충돌
+        float fX = (*iter).tSphere.x - g_tMonster.tSphere.x;
+        float fY = (*iter).tSphere.y - g_tMonster.tSphere.y;
+        float fDist = sqrtf(fX * fX + fY * fY);
 
-
-        if ((*iter).fDist >= (*iter).fLimitDist)
+        if (fDist <= (*iter).tSphere.radius + g_tMonster.tSphere.radius)
         {
             iter = g_PlayerBulletList.erase(iter);
             iterEnd = g_PlayerBulletList.end();
         }
-        else if ((*iter).rc.left > 800)
+
+        else if ((*iter).fDist >= (*iter).fLimitDist)
+        {
+            iter = g_PlayerBulletList.erase(iter);
+            iterEnd = g_PlayerBulletList.end();
+        }
+        else if ((*iter).tSphere.x - (*iter).tSphere.radius > 800)
         {
             iter = g_PlayerBulletList.erase(iter);
             iterEnd = g_PlayerBulletList.end();
             
         }
+        
         else
             iter++;
     }
+
+    // 몬스터 총알 이동
+    iterEnd = g_MonsterBulletList.end();
+    for (auto iter = g_MonsterBulletList.begin(); iter != iterEnd;)
+    {
+        (*iter).tSphere.x -= fBulletSpeed;
+        (*iter).fDist += fBulletSpeed;
+
+
+        if ((*iter).fDist >= (*iter).fLimitDist)
+        {
+            iter = g_MonsterBulletList.erase(iter);
+            iterEnd = g_MonsterBulletList.end();
+        }
+        else if ((*iter).tSphere.x - (*iter).tSphere.radius < 0.0f )
+        {
+            iter = g_MonsterBulletList.erase(iter);
+            iterEnd = g_MonsterBulletList.end();
+
+        }
+        // 총알의 충돌처리 (사각형)
+        /*else if (g_tPlayerRC.left <= (*iter).rc.right && (*iter).rc.left <= g_tPlayerRC.right
+            && g_tPlayerRC.top <= (*iter).rc.bottom && (*iter).rc.top <= g_tPlayerRC.bottom)
+        {
+            iter = g_MonsterBulletList.erase(iter);
+            iterEnd = g_MonsterBulletList.end();
+        }*/
+        else
+        {
+            iter++;
+        }
+    }
     
     // 출력 코드
-    Rectangle(g_hDC, 0, 0, 800, 600);
+    //Rectangle(g_hDC, 0, 0, 800, 600);
+    Ellipse(g_hDC, g_tMonster.tSphere.x - g_tMonster.tSphere.radius,
+        g_tMonster.tSphere.y - g_tMonster.tSphere.radius,
+        g_tMonster.tSphere.x + g_tMonster.tSphere.radius,
+        g_tMonster.tSphere.y + g_tMonster.tSphere.radius);
     Rectangle(g_hDC, g_tPlayerRC.left, g_tPlayerRC.top, g_tPlayerRC.right, g_tPlayerRC.bottom);
+    
 
     for (auto iter = g_PlayerBulletList.begin(); iter != g_PlayerBulletList.end(); iter++)
     {
-        Rectangle(g_hDC, (*iter).rc.left, (*iter).rc.top, (*iter).rc.right, (*iter).rc.bottom);
+        Ellipse(g_hDC, (*iter).tSphere.x - (*iter).tSphere.radius,
+            (*iter).tSphere.y - (*iter).tSphere.radius,
+            (*iter).tSphere.x + (*iter).tSphere.radius,
+            (*iter).tSphere.y + (*iter).tSphere.radius);
+    }
+    for (auto iter = g_MonsterBulletList.begin(); iter != g_MonsterBulletList.end(); iter++)
+    {
+        Ellipse(g_hDC, (*iter).tSphere.x - (*iter).tSphere.radius,
+            (*iter).tSphere.y - (*iter).tSphere.radius,
+            (*iter).tSphere.x + (*iter).tSphere.radius,
+            (*iter).tSphere.y + (*iter).tSphere.radius);
     }
 }
