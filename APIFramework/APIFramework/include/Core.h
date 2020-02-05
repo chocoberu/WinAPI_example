@@ -12,8 +12,16 @@ private:
 	static CCore* m_pInst;
 	HINSTANCE m_hInst;
 	HWND m_hWnd;
+	HDC m_hDC;
 	RESOLUTION m_tRS;
 	static bool m_bLoop;
+	void Logic();
+	void Input(float fDeltaTime);
+	int Update(float fDeltaTime);
+	int LateUpdate(float fDeltaTime);
+	void Collision(float fDeltaTime);
+	void Render(float fDeltaTime);
+
 public:
 	static CCore* GetInst()
 	{

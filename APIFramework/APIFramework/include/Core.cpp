@@ -1,5 +1,6 @@
 #include "Core.h"
-
+#include "Scene\SceneManager.h"
+#include "Core\Timer.h"
 CCore* CCore::m_pInst = nullptr;
 bool CCore::m_bLoop = true;
 
@@ -9,7 +10,8 @@ CCore::CCore()
 }
 CCore::~CCore()
 {
-
+    DESTROY_SINGLE(CSceneManager);
+    DESTROY_SINGLE(CTimer);
 }
 
 ATOM CCore::MyRegisterClass()
@@ -55,6 +57,43 @@ BOOL CCore::Create()
     return TRUE;
 }
 
+void CCore::Logic()
+{
+    // 타이머 갱신
+    GET_SINGLE(CTimer)->Update();
+
+    float fDeltaTime = GET_SINGLE(CTimer)->GetDeltaTime();
+    Input(fDeltaTime);
+    Update(fDeltaTime);
+    LateUpdate(fDeltaTime);
+    Collision(fDeltaTime);
+    Render(hDC, fDeltaTime);
+}
+
+void CCore::Input(float fDeltaTime)
+{
+    GET_SINGLE(CSceneManager)->Input(fDeltaTime);
+}
+int CCore::Update(float fDeltaTime)
+{
+    GET_SINGLE(CSceneManager)->Update(fDeltaTime);
+}
+
+int CCore::LateUpdate(float fDeltaTime)
+{
+    GET_SINGLE(CSceneManager)->LateUpdate(fDeltaTime);
+}
+
+void CCore::Collision(float fDeltaTime)
+{
+    GET_SINGLE(CSceneManager)->Collision(fDeltaTime);
+}
+
+void CCore::Render(float fDeltaTime)
+{
+    GET_SINGLE(CSceneManager)->Render(m_hDC, fDeltaTime);
+}
+
 bool CCore::Init(HINSTANCE hInstance)
 {
 	m_hInst = hInstance;
@@ -65,6 +104,14 @@ bool CCore::Init(HINSTANCE hInstance)
     m_tRS.iHeight = 720;
 
     Create();
+    // 화면 DC를 만들어준다
+    m_hDC = GetDC(m_hWnd);
+    // 타이머 초기화
+    if (!GET_SINGLE(CTimer)->Init())
+        return false;
+    // 장면 관리자 초기화
+    if (!GET_SINGLE(CSceneManager)->Init())
+        return false;
 	return true;
 }
 
@@ -85,7 +132,7 @@ int CCore::Run()
         }
         else // 윈도우 dead time 일때, 게임 구현부
         {
-          
+            Logic();
         }
     }
    
