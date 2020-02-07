@@ -3,9 +3,9 @@
 class CLayer
 {
 private:
+	friend class CScene;
 	CLayer();
 	class CScene* m_pScene;
-	friend class CScene;
 	string m_strTag;
 	int m_iZOrder;
 	list<class CObj*> m_ObjList;
@@ -41,5 +41,6 @@ public:
 	{
 		return m_pScene;
 	}
+	void AddObject(class CObj* pObj);
 };
 

@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include "Core.h"
+#include "Core/Core.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -13,6 +13,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
     
     int iRev = CCore::GetInst()->Run();
+    CCore::DestroyInst();
 
     return iRev;
 }

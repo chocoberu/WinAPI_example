@@ -2,6 +2,7 @@
 #include "../Game.h"
 class CTimer
 {
+	DECLARE_SINGLE(CTimer)
 private:
 	LARGE_INTEGER m_tSecond;
 	LARGE_INTEGER m_tTime;
@@ -33,6 +34,6 @@ public:
 	{
 		m_fTimeScale = fTimeScale;
 	}
-	DECLARE_SINGLE(CTimer)
+	
 };
 

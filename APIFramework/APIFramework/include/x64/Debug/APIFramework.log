@@ -1,0 +1,78 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Core.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Core\Core.cpp(50,27): warning C4838: 'unsigned int'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Core\Core.cpp(50,41): warning C4838: 'unsigned int'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+  Timer.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Minion.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Minion.cpp(57,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Minion.cpp(57,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Minion.cpp(57,33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Minion.cpp(57,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MoveObj.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Obj.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Player.cpp(63,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Player.cpp(63,46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Player.cpp(63,33): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Object\Player.cpp(63,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  StaticObj.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Ref.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  InGameScene.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Layer.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Scene.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SceneManager.cpp
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(26,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(27,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(36,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\Types.h(37,9): warning C4244: '=': 'const LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  APIFramework.vcxproj -> C:\Users\mjh29\source\repos\APIFramework\APIFramework\include\../Bin\APIFramework64_Debug.exe

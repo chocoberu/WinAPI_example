@@ -26,11 +26,13 @@ void CSceneManager::Input(float fDeltaTime)
 int CSceneManager::Update(float fDeltaTime)
 {
 	m_pScene->Update(fDeltaTime);
+	return 0;
 }
 
 int CSceneManager::LateUpdate(float fDeltaTime)
 {
 	m_pScene->LateUpdate(fDeltaTime);
+	return 0;
 }
 
 void CSceneManager::Collision(float fDeltaTime)

@@ -1,12 +1,13 @@
 #include "Core.h"
-#include "Scene\SceneManager.h"
-#include "Core\Timer.h"
+#include "..\Scene\SceneManager.h"
+#include "Timer.h"
 CCore* CCore::m_pInst = nullptr;
 bool CCore::m_bLoop = true;
 
 CCore::CCore()
 {
-
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(238);
 }
 CCore::~CCore()
 {
@@ -67,7 +68,7 @@ void CCore::Logic()
     Update(fDeltaTime);
     LateUpdate(fDeltaTime);
     Collision(fDeltaTime);
-    Render(hDC, fDeltaTime);
+    Render(fDeltaTime);
 }
 
 void CCore::Input(float fDeltaTime)
@@ -77,11 +78,13 @@ void CCore::Input(float fDeltaTime)
 int CCore::Update(float fDeltaTime)
 {
     GET_SINGLE(CSceneManager)->Update(fDeltaTime);
+    return 0;
 }
 
 int CCore::LateUpdate(float fDeltaTime)
 {
     GET_SINGLE(CSceneManager)->LateUpdate(fDeltaTime);
+    return 0;
 }
 
 void CCore::Collision(float fDeltaTime)

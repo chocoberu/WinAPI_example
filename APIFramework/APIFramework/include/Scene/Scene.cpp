@@ -44,12 +44,14 @@ int CScene::Update(float fDeltaTime)
 {
 	for (auto iter = m_LayerList.begin(); iter != m_LayerList.end(); iter++)
 		(*iter)->Update(fDeltaTime);
+	return 0;
 }
 
 int CScene::LateUpdate(float fDeltaTime)
 {
 	for (auto iter = m_LayerList.begin(); iter != m_LayerList.end(); iter++)
 		(*iter)->LateUpdate(fDeltaTime);
+	return 0;
 }
 
 void CScene::Collision(float fDeltaTime)
@@ -62,4 +64,14 @@ void CScene::Render(HDC hDC, float fDeltaTime)
 {
 	for (auto iter = m_LayerList.begin(); iter != m_LayerList.end(); iter++)
 		(*iter)->Render(hDC, fDeltaTime);
+}
+
+CLayer* CScene::FindLayer(const string& strTag)
+{
+	for (auto iter = m_LayerList.begin(); iter != m_LayerList.end(); iter++)
+	{
+		if ((*iter)->GetTag() == strTag)
+			return *iter;
+	}
+	return nullptr;
 }

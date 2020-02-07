@@ -8,6 +8,7 @@
 #include "resource.h"
 #include "Types.h"
 #include "Flag.h"
+#include <crtdbg.h>
 
 using namespace std;
 

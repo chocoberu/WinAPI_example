@@ -3,9 +3,10 @@
 #include "../Game.h"
 class CSceneManager
 {
+	DECLARE_SINGLE(CSceneManager);
 public:
 	bool Init();
-	DECLARE_SINGLE(CSceneManager);
+	
 	template <typename T>
 	T* CreateScene(SCENE_CREATE sc)
 	{

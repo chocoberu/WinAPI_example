@@ -1,5 +1,5 @@
 #pragma once
-#include "Game.h"
+#include "../Game.h"
 
 class CCore
 {
@@ -36,4 +36,8 @@ public:
 	bool Init(HINSTANCE hInstance);
 	int Run();
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	RESOLUTION GetResoultion() const
+	{
+		return m_tRS;
+	}
 };

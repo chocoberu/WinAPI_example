@@ -30,4 +30,6 @@ void CTimer::Update()
 	QueryPerformanceCounter(&tTime);
 
 	m_fDeltaTime = (tTime.QuadPart - m_tTime.QuadPart) / (float)m_tSecond.QuadPart;
+
+	m_tTime = tTime;
 }

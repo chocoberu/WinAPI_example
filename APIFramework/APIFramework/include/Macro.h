@@ -7,8 +7,6 @@
 #define DECLARE_SINGLE(Type) \
 	private : \
 		static Type* m_pInst;\
-		Type();\
-		~Type();\
 	public: \
 		static Type* GetInst()\
 		{\
@@ -19,7 +17,12 @@
 		static void DestroyInst()\
 		{\
 			SAFE_DELETE(m_pInst);\
-		}
+		}\
+		private: \
+			Type();\
+			~Type();
+
 #define DEFINITION_SINGLE(Type) Type* Type::m_pInst = nullptr;
 #define GET_SINGLE(Type) Type::GetInst()
 #define DESTROY_SINGLE(Type) Type::DestroyInst()
+#define GETRESOLUTION CCore::GetInst()->GetResoultion()
